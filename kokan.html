@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div style="width: 300px; height: 300px; padding: 15px;" id="box">
+
+<input type="checkbox" onclick="red()">crveno<br>
+<input type="checkbox" onclick="green()">zeleno<br>
+<input type="checkbox" onclick="sirina()">širina<br>
+<input type="checkbox" onclick="visina()">visina<br>
+<input type="checkbox" onclick="left()">pomak u lijevo<br>
+<input type="checkbox" onclick="right()">pomak u desno<br>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+function red() {
+  document.getElementById("box").style.backgroundColor="red";
+}
+
+
+
+function green() {
+  document.getElementById("box").style.backgroundColor="green";
+}
+
+
+
+function sirina() {
+  document.getElementById("box").style.width="400px";
+}
+
+
+
+function visina() {
+  document.getElementById("box").style.height="400px";
+}
+
+
+
+function left() {
+  document.getElementById("box").style.marginLeft="50px";
+}
+
+
+
+function right() {
+  document.getElementById("box").style.marginLeft="0px";
+}
+    </script>
+</body>
+</html>
