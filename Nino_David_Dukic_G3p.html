@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tOO dOO</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+  <style>
+    #ToDo {
+      float: left;
+      min-height: 12em;
+    }
+
+    .ToDo.custom-state-active {
+      background: #eee;
+    }
+
+    .ToDo li {
+      float: left;
+      width: 300px;
+      padding: 0.4em;
+      margin: 0 0.4em 0.4em 0;
+      text-align: center;
+    }
+
+    .ToDo li h5 {
+      margin: 0 0 0.4em;
+      cursor: move;
+    }
+
+    .ToDo li a {
+      float: right;
+    }
+
+    .ToDo li a.ui-icon-zoomin {
+      float: left;
+    }
+
+    .ToDo li img {
+      width: 100%;
+      cursor: move;
+    }
+
+    #trash {
+      float: right;
+      width: 32%;
+      min-height: 18em;
+      padding: 1%;
+    }
+
+    #trash h4 {
+      line-height: 16px;
+      margin: 0 0 0.4em;
+    }
+
+    #trash h4 .ui-icon {
+      float: left;
+    }
+
+    #trash .ToDo h5 {
+      display: none;
+    }
+
+    form {
+      width: 95%
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+
+    Body {
+      font: normal normal 13px/16px "Open Sans", sans-serif;
+      background: #dfdfdf;
+    }
+
+    .container {
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 40px;
+      background: white;
+      border-radius: 5px;
+    }
+
+    form {
+      display: inline-block;
+    }
+
+    input {
+      padding: 4px 15px 4px 5px;
+    }
+
+    button {
+      display: inline-block;
+      background-color: green;
+      color: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      margin-top: 2px;
+      padding: 5px 15px;
+    }
+
+    button:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    ol li {
+      padding: 5px;
+      color: #000;
+      width: 80% !important
+    }
+
+    ol li:nth-child(even) {
+      background: #dfdfdf;
+    }
+
+    .strike {
+      text-decoration: line-through;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="ui-widget ui-helper-clearfix">
+
+    <ul id="ToDo" class="ToDo ui-helper-reset ui-helper-clearfix">
+      <li class="ui-widget-content ui-corner-tr">
+        <h5 class="ui-widget-header">Jučer</h5>
+        <form name="toDoList">
+          <input type="text" id="ListItem1" />
+        </form>
+        <button id="button">Add</button>
+        <br />
+
+          PPPPPPPP
+        <div><p>aaaaaaaaaa</p></div>
+      
+
+        </ol><p>aaaaaaaaa</p>
+        <p ><strong>Zadatak dodijeljen:</strong><br /><span id="a">no one</span></p>
+        <span id="dodijeli2"></span>
+        <button id="dodijeli1">Dodijeli zadatak</button>
+        <span class="ui-icon uiiiii-icon-triangle-2-n-s">Delete image</span>
+      </li>
+<h3>assdadadw</h3>
+
+    </ul>
+
+
+    <div id="formica1" title="Dodijeli zadatak">
+      <form>
+        <fieldset>
+          <label for="name">Ime i prezime</label><br>
+          <input type="textttt" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+          <br><br>
+          <label for="datum">Rok predaje</label><br>
+          <input type="text" name="datum" class="kalendaric" value="definiraj rok"
+            class="text ui-widget-content ui-corner-all">
+          <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+      </form>
+    </div>
+aaaaaaaaq
+<p>PLacaaaaaaab bbnbbbbbbbaaaaaaaaaaaaaqaqaaqqaq</p>
+<div>
+  <p>Dodavanjeeee</p>
+</div>
+  </div>
+<script>
+  $(document).ready(function () {
+    $("#formica1").hide();
+
+    $("#ToDo").draggable({
+        axis: "x",
+        containment: "parent"
+        
+    });
+
+    $("#zdtc1").on("click", "li", function() {
+    $(this).toggleClass("strike").fadeOut("slow", function() {
+      $(this).remove();
+    });
+  });
+
+    $("#button").button().on("click", function() {
+      var taskName1 = $("#ListItem1").val();
+               if (taskName1 !== "") {
+                 var newTask1 = $("<li>").html('<span name="task" value="' + taskName1 + '" /> ' + taskName1);
+                 $("#zdtc1").append(newTask1);
+                }
+    });
+
+    $("#zdtc1").sortable();    
+
+    $("#dodijeli1").button().on("click", function() {
+  $("#formica1").dialog({ 
+    modal: true,
+      buttons: {
+        "Dodijeli zadatak": function() {
+          var taskName = $("#name").val();
+          var datum = $(".kalendaric").val();
+           if (taskName !== "" && datum !== "" ) {
+             var newTask = $("<li>").html('<span name="task" value="' + taskName + '-' + datum +  '"  /> ' + taskName + ' - ' + datum);
+             $("#dodijeli2").append(newTask);
+             $("#a").hide();
+             $(this).dialog("close");
+            }
+            if (datum == "") {
+              $(".kalendaric").css("border-color", "red");
+            } else {
+              $(".kalendaric").css("border-color", "");
+            }
+        },
+        Cancel: function() {
+          $(this).dialog("close");
+
+         
+        }
+      } 
+  }); 
+});
+$(".kalendaric").datepicker();
+
+  })
+</script>
+</body>
+
+</html>
