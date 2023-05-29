@@ -1,0 +1,1 @@
+# djvrtic od najgorih programera
