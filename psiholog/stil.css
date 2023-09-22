@@ -1,0 +1,209 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	text-align: justify;
+}
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+	background-color: #FFFFFF;
+	background-repeat: repeat;
+	margin: 0 px auto;
+}
+
+.clanci {
+	width: 450px;
+	margin-top: 0px; /* boks kutija od clanaka*/
+	text-align: left;
+	padding-right: 10px;
+	padding-left: 5px;
+	margin-left: 90px;
+	float: left;
+	margin-right: 5px;
+	color: #000000;
+	height: 400px;
+	overflow: scroll;
+	background-image: url(*grb_boja.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+.glavnilinkovi {
+	padding: 5px;
+	margin-top: 145px;
+	margin-right: auto;
+	margin-left: auto;
+	width:480px;
+	padding-left: 230px;
+	background-color: ;
+	border-top-width: 2 px;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #999900;
+	border-bottom-color: #999900;
+}
+.index-botun {
+	height: 30px;
+	width: 200px;
+	position: relative;
+	left: 10px;
+	top: 183px;
+
+}
+.glavnilinkovi a:link {
+	color: #333333;
+	text-decoration: none;
+	padding: 5px;
+	font-size: small;
+}
+.glavnilinkovi a:visited {
+	color: #333333;
+	text-decoration: none;
+	padding: 5px;
+	font-size: small;
+}
+.glavnilinkovi a:hover {
+	color: #000033;
+	text-decoration: underline;
+	padding: 5px;
+	background-color:#FFFFFF;
+	font-weight: bold;
+}
+h1 {
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+h2 {
+	font-size: 16px;
+	color: #FFFFFF;
+	background-color: #000000;
+	display: block;
+	text-align: left;
+	margin: 0px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #000000;
+}
+h3 {
+	font-size: 30px;
+	padding-top: 60px;
+	color: #000000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.baner {
+	height: 170px;
+	width: 700px;
+	margin-top: 0px;
+	margin-left: 0px;
+	position: absolute;
+	left: 9px;
+	top: 2px;
+	background-image: url(slike/baner.jpg);
+	background-repeat: no-repeat;
+}
+
+.podlinkovi {
+	width: 120px;
+	float: left;
+	padding: 0px;
+	margin-top: 0px;
+	text-align: right;
+	margin-left: 20px;
+}
+.podlinkovi a:link {
+	color: #000000;
+	text-decoration: none;
+	padding: 0px;
+	font-size: small;
+	padding-right: 5px;
+}
+.podlinkovi a:visited {
+	color: #000000;
+	text-decoration: none;
+	padding: 0px;
+	font-size: small;
+	padding-right: 5px;
+}
+.podlinkovi a:hover {
+	text-decoration: underline;
+
+}
+.kontejner {
+	width: 700px;
+	padding: 0px;
+	margin:0px auto;
+	height: 560px;
+	position: relative;
+	top: 2%;
+	background-image: url(+grb_boja.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+a:link, a:visited{
+	text-align: left;
+	padding-left: 10px;
+	text-decoration: underline;
+	color: #000000;
+}
+a:hover {
+	text-decoration: underline;
+	background-color: #FFFFFF;
+	color: #000000;
+}
+.desno {
+	width: 234px;
+	float: right;
+	padding: 0px;
+	margin-top: 5px;
+	background-image: url(+slike/desno.jpg); /* slika desnaa visoka*/
+	height: 450px;
+	position: absolute;
+	left: 550px;
+	top: 215px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.desno p {
+
+	font-size: 12px;
+	color: #000000;
+	text-align: left;
+	padding-left: 10px;
+	margin-top: 0px;
+	text-indent: 10px;
+	margin-bottom: 0px;
+	padding-right: 10px;
+}
+.footer {
+	margin-bottom: 0px;
+	margin-top:400px;
+	background-image: url(slike/under.jpg);
+	height:120px;
+	width: 700px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.footer a:link {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.footer a:visited {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+.slika
+{
+width: 445px;
+margin-bottom: 10px;
+}

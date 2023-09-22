@@ -1,0 +1,1 @@
+<a href="../sigurnost/odjava.php">Odjava</a> | 
