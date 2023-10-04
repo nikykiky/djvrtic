@@ -1,19 +1,17 @@
 <html>
 <body>
 <?php
-mysql_connect("localhost", "root", "");
-mysql_select_db("dnevnik_rada_psiholog");
+$con = mysqli_connect("localhost","root","","dnevnik_rada_psiholog");
+$korisnik = $_POST["id_korisnika"];
+$opis = $_POST["opis_dnevnik_rada"];
 
-$result = mysql_query("
-INSERT INTO dnevnik_rada (id_ko, opis) 
-values('$_POST[id_korisnika]','$_POST[opis_dnevnik_rada]')");
+$rezultat ="INSERT INTO dnevnik_rada (id_ko, opis) values('$korisnik','$opis')";
+if (mysqli_query($con, $rezultat)) {
+	echo "New record created successfully";
+  } else {
+	echo "Error: " . $rezultat . "<br>" . mysqli_error($con);
+  }
 
-
-if (mysql_affected_rows() == 1)
-	header("location:./dnevnik_rada.php");	
-	// tocka oznacava da je u istom folderu
-else
-	echo "Nije unijeto!";
 
 ?>
 
