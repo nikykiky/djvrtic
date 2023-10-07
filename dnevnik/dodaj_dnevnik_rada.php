@@ -1,5 +1,6 @@
 <html>
 <body>
+
 <?php
 $con = mysqli_connect("localhost","root","","dnevnik_rada_psiholog");
 $korisnik = $_POST["id_korisnika"];
