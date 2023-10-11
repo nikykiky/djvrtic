@@ -6,7 +6,7 @@
 <link rel=stylesheet href="../admin_css.css" type="text/css" />
 </head>
 <body>
-<div class="sve">
+
 <?php
 //pozivan formu da mogu upisati podatke
 include("loginForma.php");  
