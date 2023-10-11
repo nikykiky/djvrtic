@@ -6,16 +6,16 @@
 <link rel=stylesheet href="../admin_css.css" type="text/css" />
 </head>
 <body>
-<div class="sve">
+
 <?php
 //pozivan formu da mogu upisati podatke
 include("loginForma.php");  
 
 if (isset($_POST["sbmt_login"])) {
-	mysql_connect("localhost", "root", "");
-    mysql_select_db("dnevnik_rada_psiholog");
-    $rezultat = mysql_query("SELECT * FROM korisnik WHERE korisnicko_ime='$_POST[korisnik]' LIMIT 1");
-	$user_data = mysql_fetch_array($rezultat);
+	$con=mysqli_connect("localhost", "root", "");
+    mysqli_select_db($con,"dnevnik_rada_psiholog");
+    $rezultat = mysqli_query($con,"SELECT * FROM korisnik WHERE korisnicko_ime='$_POST[korisnik]' LIMIT 1");
+	$user_data = mysqli_fetch_array($rezultat);
 
 	$korisnik = $user_data['korisnicko_ime'];
 	$zaporka = $user_data['lozinka'];
