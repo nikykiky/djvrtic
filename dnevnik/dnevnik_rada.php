@@ -186,12 +186,7 @@ require_once("../izbornik.php");
 <h2>Pregled dnevnika rada za današnji datum</h2>
 
 <?php
-<<<<<<< HEAD
-	$con=mysqli_connect("localhost", "root", "");
-	mysqli_select_db($con,"dnevnik_rada_psiholog");
-=======
 	$con = mysqli_connect("localhost","root","","dnevnik_rada_psiholog");
->>>>>>> 0ad6dc333baf5a097c86a162b4ede246074f49bf
 
 	$danasnji_datum = date("Y-m-d");
 
@@ -211,15 +206,9 @@ require_once("../izbornik.php");
  		<td><b>Obrisi</b></td>
 		</tr>";
 	
-<<<<<<< HEAD
-	while($redak = mysqli_fetch_array($pdtc_dnevnik_rada))
-	  {
-	  $id = $redak['id_dr'];
-=======
 while($redak = mysqli_fetch_array($pdtc_dnevnik_rada))
  	  {
  	  $id = $redak['id_dr'];
->>>>>>> 0ad6dc333baf5a097c86a162b4ede246074f49bf
 	  $dt = new DateTime($redak['datum_unosa']);
 	  $vrijeme = $dt->format('H:i');
   
@@ -245,10 +234,6 @@ while($redak = mysqli_fetch_array($pdtc_dnevnik_rada))
  	<input type="text" style="display: none" />
  </div>
 
-<<<<<<< HEAD
-<script>
-	/*
-=======
  <script>   
         
         
@@ -287,7 +272,6 @@ $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
 }, 1000); 
 });
      
->>>>>>> 0ad6dc333baf5a097c86a162b4ede246074f49bf
 function izbrisi_unos_iz_dnevnika(obj) {
 	alert("dsfsdf");
     var id_delete_dnevnika_rada = obj.getAttribute('data-dr_id');
@@ -346,15 +330,11 @@ $( "#sbmt_date" ).click(function (e) {
 	alert("sadasdas");
 var odabrani_datum  = new Date($("#datepicker").val());
  var datum = odabrani_datum.getFullYear() + '-' + ((odabrani_datum.getMonth() + 1) < 10 ? '0' : '') + (odabrani_datum.getMonth() + 1) + '-' + ((odabrani_datum.getDate() + 1) < 10 ? '0' : '') + (odabrani_datum.getDate());
-<<<<<<< HEAD
- 
-=======
   e.preventDefault();
         var url = 'sql_dohvati_po_datumu.php';
         $.post(url, { datum: datum}, function(data){      // $.get will get the content of the page defined in url and will return it in **data** variable 
             $('#demo').append(data);
        });
->>>>>>> 0ad6dc333baf5a097c86a162b4ede246074f49bf
 	console.log(datum);
 	$.ajax({
 		type: "POST",
@@ -368,15 +348,8 @@ var odabrani_datum  = new Date($("#datepicker").val());
 	});
 return false;
 });
-<<<<<<< HEAD
-*/
-</script>
-</body>
-</html>
-=======
 // </script>
 // </body>
 // </html>
->>>>>>> 0ad6dc333baf5a097c86a162b4ede246074f49bf
 
 
