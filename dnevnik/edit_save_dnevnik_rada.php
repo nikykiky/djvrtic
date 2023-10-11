@@ -11,11 +11,10 @@
 <h2>Promjena dnevnika rada</h2>
 
 <?php
-    mysqli_connect("localhost", "root", "");
-    mysqli_select_db("dnevnik_rada_psiholog");
-    $result = mysqli_query("UPDATE dnevnik_rada SET opis='$_POST[opis_dnevnik_rada]' where id_dr='$_POST[id_dr]'");
-
-if (mysqli_affected_rows() == 1) 
+   $con = mysqli_connect("localhost", "root", "","dnevnik_rada_psiholog");
+$result = "UPDATE dnevnik_rada SET opis='$_POST[opis_dnevnik_rada]' where id_dr='$_POST[id_dr]'";
+$sql = mysqli_query($con,$result);
+if (mysqli_affected_rows($con) == 1) 
 { 
 	echo "Promijene unesene.";
 }

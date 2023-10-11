@@ -18,11 +18,14 @@
     mysqli_select_db($con,"dnevnik_rada_psiholog");
     $rezultat ="SELECT * FROM dnevnik_rada where id_dr=$id_dr LIMIT 1";
 	$sql = mysqli_query($con,$rezultat);
-	$dnevnik_rada = mysqli_fetch_array($con,$sql);
+	while($dnevnik_rada = mysqli_fetch_array($sql))
+{
 	print "<form action='edit_save_dnevnik_rada.php' method='POST'>";
 	print "<textarea rows='4' cols='50' name='opis_dnevnik_rada'>".$dnevnik_rada['opis']."</textarea><br />";
 	print "<td><input type='hidden' name='id_dr' value='".$dnevnik_rada['id_dr']."'></td>";
 	print "<input type='submit' name='submit' value='Promijeni'>";
+}
+	
 ?>
 </div>
 </body>
