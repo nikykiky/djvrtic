@@ -6,14 +6,16 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <title>Dodaj učenika</title>
 <meta http-equiv="Content-Type" content="text/html"/>
 <meta charset="utf-8">
-<link href="admin_css.css" rel="stylesheet" type="text/css" />
+<link href="../admin_css.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="sve">
 
 <h2>Dodaj učenika</h2>
 
+<?php 
 
+?>
 <form action="dodaj_pohrani_ucenika.php" method="POST">
 Ime: <input type="text" name="ime_ucenika" /><br />
 Prezime: <input type="text" name="prezime_ucenika"><br />
@@ -36,6 +38,8 @@ ID razreda: <input type="text" name="id_razreda" /><br />
 
 <input type="submit" value="Dodaj učenika"/>
 </form>
+
+
 </div>
 </body>
 </html>

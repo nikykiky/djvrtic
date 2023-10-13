@@ -12,20 +12,22 @@
 
 <?php
 
-mysql_connect("localhost", "root", "");
-mysql_select_db("dnevnik_rada_psiholog");
+$con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
 
-$result = mysql_query("
+
+$result = mysqli_query($con,"
 INSERT INTO dosje_ucenika (id_uc, id_ko, opis, datum_unosa) 
 values('$_POST[id_ucenika]','$_POST[id_korisnika]', '$_POST[dosje_opis]','$_POST[datum_unosa_dosjea]')");
 
-if (mysql_affected_rows() == 1) {
+if (mysqli_affected_rows($con) == 1) {
 ?>
-Uspjeöno uneöeno! <br /><br />
+Uspje≈°no uneseno! <br /><br />
+
 <?php
 }
 else
 {
+    
 ?>
 Nije unijeto!<br /><br />
 <?php
