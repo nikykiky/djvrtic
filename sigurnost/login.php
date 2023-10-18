@@ -26,9 +26,7 @@ if (isset($_POST["sbmt_login"])) {
 		$_SESSION['user'] = $korisnik;
 		$_SESSION['pass'] = $zaporka;
 		$_SESSION['user_id'] = $user_id;
-		
 		$SID = session_id();
-		$admin_stranica = "../dnevnik/dnevnik_rada.php";
 		header("location:../dnevnik/dnevnik_rada.php");	
 	}
 	else{ 

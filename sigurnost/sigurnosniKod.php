@@ -10,9 +10,6 @@ if((!isset($_SESSION['user'])) || (!isset($_SESSION['pass'])) ) {
 	exit;
 }
 
-//require_once("tajne_konstante.php");
-
-
 /*
 	OVDJE SE PISE KOD KOJI SE UCITAVA NA SVIM STRANICAMA
 

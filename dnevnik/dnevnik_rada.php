@@ -7,30 +7,28 @@
 	<meta http-equiv="Content-Type" content="text/html"/>
 	<meta charset="utf-8">
 	<link href="dnevnik_radacss.css" rel="stylesheet" type="text/css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	<script src="../jquery/jquery-ui.min.js"></script>
-	<link href="../jquery/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </head>
 <body>
 	<script>
+		/**
+		 * samom sat
+		 */
 		window.onload = function() {
-
-		const hourHand = document.querySelector('.hourHand');
+			const hourHand = document.querySelector('.hourHand');
 			const minuteHand = document.querySelector('.minuteHand');
 			const secondHand = document.querySelector('.secondHand');
 			const time = document.querySelector('.time');
 			const clock = document.querySelector('.clock');
-			const audio = document.querySelector('.audio');
 
 			function setDate(){
 				const today = new Date();
-				
 				const second = today.getSeconds();
 				const secondDeg = ((second / 60) * 360) + 360; 
 				secondHand.style.transform = `rotate(${secondDeg}deg)`;
-			
-				audio.play();
-				
+	
 				const minute = today.getMinutes();
 				const minuteDeg = ((minute / 60) * 360); 
 				minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
@@ -40,11 +38,10 @@
 				hourHand.style.transform = `rotate(${hourDeg}deg)`;
 				
 				time.innerHTML = '<span>' + '<strong>' + hour + '</strong>' + ' : ' + minute + ' : ' + '<small>' + second +'</small>'+ '</span>';
-				}
+			}
 			setInterval(setDate, 1000);
 		}
 	</script>
-
 	<div class="clock">
 		<div class="hourHand"></div>
 		<div class="minuteHand"></div>
@@ -66,32 +63,37 @@
 			<li><span>12</span></li>
 		</ul>
 	</div>
-	<audio src="https://sampleswap.org/samples-ghost/DRUMS%20and%20SINGLE%20HITS/snares/5[kb]sidestick.aif.mp3" class="audio"></audio>
-	
+
 	<div class="sve">
 		<?php 
+			//trenutno samo botun odjava
 			require_once("../izbornik.php"); 
 		?> 
 		<h2>Dnevnik rada</h2>
 		<footer>
-			<p>Created by G4P<i class="fa fa-heart"><a></a></i></p>
+			<p>Created by G4P<i class="fa fa-heart"></i></p>
 		</footer>
 
-		<form action="dodaj_dnevnik_rada.php" method="POST">
-			<p id="demo"></p>
-			<div class="unos_dnevnika">
-				<form action="dodaj_dnevnik_rada.php" method="POST"> 
-					<input type="text" name="id_korisnika" value="<?=$_SESSION['user_id']?>" style="display:none"/>
-					Opis: <br />
-					<textarea rows="3" cols="10" name="opis_dnevnik_rada"></textarea>
-					<br />
-					<input type="submit" value="Dodaj dnevnik rada" name="sbmt_dnevnik_rad"/>
-				</form>
-			</div>
-		</form>
+
+		<p id="demo"></p>
+		<div class="unos_dnevnika">
+			<form action="" method="POST"> 
+				<input type="text" name="id_korisnika" value="<?=$_SESSION['user_id']?>" style="display:none"/>
+				Opis: <br />
+				<textarea rows="3" cols="5" name="opis_dnevnik_rada"></textarea>
+				<br />
+				<input type="submit" value="Dodaj dnevnik rada" name="sbmt_dnevnik_rad"/>
+			</form>
+			<input type="text" id="datepicker" style="width:100px; background-color:blue; color:white">
+		</div>
+		
+
 		<h2>Pregled dnevnika rada za današnji datum</h2>
 
 		<?php
+			/**
+			 * prikaz dnevnika rada na danasnji datum
+			 */
 			$con = mysqli_connect("localhost","root","","dnevnik_rada_psiholog");
 			$danasnji_datum = date("Y-m-d");
 
@@ -99,43 +101,62 @@
 			SELECT * FROM dnevnik_rada
 			INNER JOIN korisnik ON korisnik.id_ko = dnevnik_rada.id_ko
 			WHERE datum_unosa LIKE '".$danasnji_datum."%'");
-
-
-			if(!isset($_POST['sbmt_date'])) {
-				echo "<table border='1'>
-					<tr id='plava' valign='top'>
-					<td><b>Dnevnik rada</b></td>
-					<td><b>Upisao</b></td>
-					<td><b>Izmjeni</b></td>
-					<td><b>Obrisi</b></td>
-					</tr>";
-				
-				while($redak = mysqli_fetch_array($pdtc_dnevnik_rada)){
-					$id = $redak['id_dr'];
-					$dt = new DateTime($redak['datum_unosa']);
-					$vrijeme = $dt->format('H:i');
 		
-					echo "<tr valign='top'><td>";
-					echo $redak['opis'];
-					echo "</td><td>";
-					echo $redak['ime']." ".$vrijeme;
-					echo "</td><td>";
-					echo "<a href='edit_dnevnika_rada.php?id_dr=$id'>Edit </a>";
-					echo "<a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='$redak[opis]' data-dr_id='$id'>Uredi</a>";
-					echo "</td><td>";
-					echo "<a href='izbrisi_dnevnik_rada.php?id_dr=$id'> Delete </a>";
-					echo "<a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id='$id'>Izbrisi</a>";
-					echo "</td></tr>";
+			echo "<table id='tablica_dnevnika_rada' border='1'>
+				<tr id='plava' valign='top'>
+				<td width='50%'><b>Dnevnik rada</b></td>
+				<td width='20%'><b>Upisao</b></td>
+				<td width='15%'><b>Izmjeni</b></td>
+				<td width='15%'><b>Obrisi</b></td>
+				</tr>";
+			
+			while($redak = mysqli_fetch_array($pdtc_dnevnik_rada)){
+				$id = $redak['id_dr'];
+				$dt = new DateTime($redak['datum_unosa']);
+				$vrijeme = $dt->format('H:i');
+	
+				echo "<tr valign='top'><td>";
+				echo $redak['opis'];
+				echo "</td><td>";
+				echo $redak['ime']." ".$vrijeme;
+				echo "</td><td>";
+				echo "<a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='$redak[opis]' data-dr_id='$id'>Uredi</a>";
+				echo "</td><td>";
+				echo "<a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id='$id'>Izbrisi</a>";
+				echo "</td></tr>";
+			}
+			echo "</table>";
+			// return; //return false; a false glumi prevent default
+		
+			/**
+			 * dodavanje u dnevnik rada
+			 */
+			if (isset($_POST['sbmt_dnevnik_rad'])) {
+				$korisnik = $_SESSION['user_id'];
+				$opis = $_POST["opis_dnevnik_rada"];
+
+				$rezultat ="INSERT INTO dnevnik_rada (id_ko, opis) values('$korisnik','$opis')";
+				if (mysqli_query($con, $rezultat)) {
+					echo "<p>New record created successfully</p>";
+				} 
+				else {
+					echo "Error: " . $rezultat . "<br>" . mysqli_error($con);
 				}
-				echo "</table>"; return; //return false; a false glumi prevent default
 			}
 		?>
  	</div>
+
 	<div id="dialog" title="Uredivanje unosa"  style="display: none;">
 		<textarea id="uredi_unos" style="height:100%;padding:5px; font-family:Sans-serif; font-size:1.2em;"></textarea>
 		<input type="text" style="display: none" />
 	</div>
+
 	<script>      
+	
+		/** 
+		 * neki sat vjerojatno za delete al ajd
+		*/
+		/*
 		$(document).ready(function() {
 			// Making 2 variable month and day
 			var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
@@ -168,10 +189,12 @@
 			// Add a leading zero to the hours value
 			$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
 			}, 1000); 
-		});
+		});	
+	*/
+
+
      
 		function izbrisi_unos_iz_dnevnika(obj) {
-			alert("dsfsdf");
 			var id_delete_dnevnika_rada = obj.getAttribute('data-dr_id');
 			//console.log(id_delete_dnevnika_rada);
 			
@@ -188,10 +211,12 @@
 			}
 		}
 
+
+
 		$("#dialog").dialog({
 			autoOpen: false,
-			height: 300,
-			width: 350,
+			height: 400,
+			width: 450,
 			modal: true,
 			resizable: true,
 			buttons: {
@@ -200,7 +225,7 @@
 					var id_unosa_za_edit = $('#dialog').find("input").val();
 					$.ajax({
 						type: "POST",
-						url: "sql_spremi_editirani_unos_iz_dnevnika.php",
+						url: "spremi_editirani_unos_iz_dnevnika.php",
 						data: {"opis_dnevnik_rada" : unos, "id_unosa_za_edit" : id_unosa_za_edit },
 						success: function (rez) {
 							location.reload(); 
@@ -222,31 +247,61 @@
 			$('#dialog').dialog('open');
 		}
 
-/*
-$( "#datepicker" ).datepicker();
-$( "#sbmt_date" ).click(function (e) {
-	alert("sadasdas");
-var odabrani_datum  = new Date($("#datepicker").val());
- var datum = odabrani_datum.getFullYear() + '-' + ((odabrani_datum.getMonth() + 1) < 10 ? '0' : '') + (odabrani_datum.getMonth() + 1) + '-' + ((odabrani_datum.getDate() + 1) < 10 ? '0' : '') + (odabrani_datum.getDate());
-  e.preventDefault();
-        var url = 'sql_dohvati_po_datumu.php';
-        $.post(url, { datum: datum}, function(data){      // $.get will get the content of the page defined in url and will return it in **data** variable 
-            $('#demo').append(data);
-       });
-	console.log(datum);
-	$.ajax({
-		type: "POST",
-		url: "sql_dohvati_po_datumu.php",
-		data: {"datum" : datum},
-		success: function (rez) {
-			console.log(rez);
-			alert(rez);
-			//location.reload(); 
-		}
-	});
-return false;
-});
-// 
+
+		$("#datepicker").datepicker({
+			dateFormat: "mm-dd-yy", 
+			onSelect: function(dateText, inst) {
+				var odabrani_datum  = new Date(dateText);
+				console.log(dateText)
+				console.log(odabrani_datum)
+				var datum = odabrani_datum.getFullYear() + '-' + ((odabrani_datum.getMonth() + 1) < 10 ? '0' : '') + (odabrani_datum.getMonth() + 1) + '-' + ((odabrani_datum.getDate() + 1) < 10 ? '0' : '') + (odabrani_datum.getDate());
+				
+				var url = 'sql_dohvati_po_datumu.php';
+				console.log("datum", odabrani_datum)
+				$.post(url, { datum: datum}, function(data){      
+					$('#demo').append(data);
+				});
+				console.log(datum);
+
+				$.ajax({
+					type: "POST",
+					url: "sql_dohvati_po_datumu.php",
+					data: {"datum" : datum},
+					success: function (podaci) {
+						var tbody = $("#tablica_dnevnika_rada tbody");
+						var noviRedak;
+						podaci = JSON.parse(podaci)
+						console.log(podaci)
+						// Prolazite kroz dobivene podatke i dodajte ih u tablicu
+						for (var i = 0; i < podaci.length; i++) {
+							var redak = podaci[i];
+							noviRedak += 
+							`<tr>
+							<td>${redak.opis}</td>
+							<td>${redak.datum_unosa}</td> 
+							<td><a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='' data-dr_id=''>NERADIII</a></td>
+							<td><a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id=''>NERADIII</a></td>"+
+							</tr>`;
+							console.log(redak)
+							tbody.append(noviRedak);
+						}
+					}
+				});
+			}
+		});
+
+		var danasnjiDatum = new Date();
+		var dan = danasnjiDatum.getDate();
+		var mjesec = danasnjiDatum.getMonth() + 1; // Mjeseci kreću od 0
+		var godina = danasnjiDatum.getFullYear();
+		// Formatirajte datum prema vašim željama (npr., "dd.mm.yyyy")
+		var formatiraniDatum =  mjesec + '-' + dan + '-' + godina;
+		// Postavite vrijednost input polja na današnji datum
+		$("#datepicker").val(formatiraniDatum);
+
+
+
+
 </script>
 </body>
 </html>
