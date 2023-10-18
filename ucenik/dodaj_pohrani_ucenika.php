@@ -4,7 +4,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" lang="hr">
 <html>
 <head>
-<title>Spremanje ućenika</title>
+<title>Spremanje u�enika</title>
 <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
 <link rel=stylesheet href="admin_css.css" type="text/css" />
 </head>
@@ -14,7 +14,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <h2> Dodavanje ucenika </h2>
 
 <?php
-$con = mysqli_connect("localhost", "root", "" , "dnevnik_rada_psiholog");
+$con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
 
 
 $result_ucenik = mysqli_query($con,"
@@ -49,9 +49,9 @@ INSERT INTO ucenik_razred (id_ra, id_uc, id_skgod) values
 ('$_POST[id_razreda]',".$id_ucenika.",'$_POST[id_sk_god]');
 ");
 
-if (mysqli_affected_rows($con) == 1) {
+if (mysqli_affected_rows() == 1) {
 ?>
-Uspješno unenjeno! <br /><br />
+Uspje�no une�eno! <br /><br />
 <?php
 }
 else{

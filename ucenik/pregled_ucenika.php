@@ -2,7 +2,7 @@
 <head>
 <title>Pregled ucenika</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
-<link href="clanci_css.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../admin_css.css" />
 </head>
 <body>
 <div class="sve">
@@ -16,7 +16,7 @@
 	
     $dosje_ucenika = mysqli_query($con, "SELECT opis, DATE_FORMAT(datum_unosa,' %d.%c.%Y %H:%i') AS dan_upisa, korisnik.ime AS korisnik FROM ucenik INNER JOIN dosje_ucenika ON ucenik.id_uc = dosje_ucenika.id_uc INNER JOIN korisnik ON korisnik.id_ko = dosje_ucenika.id_ko WHERE dosje_ucenika.id_uc={$_GET['id_ucenika']}");
    
-	echo "<form action='edit_pohrani.php' method='POST'>";
+	echo "<form action='dodaj_dosje.php' method='POST'>";
 
 	//if(if(isset($_POST['submit'])) != true )
 	while ($redak = mysqli_fetch_assoc($pdtc_ucenika)) {
@@ -34,7 +34,7 @@
 	
 	
 	
-	echo "<input type='submit' name='submit' value='Azuriraj'></form>";
+	// echo "<input type='submit' name='submit' value='Azuriraj'></form>";
 	
 	echo "<h1>Dosje</h1>";
     while ($redak = mysqli_fetch_assoc($dosje_ucenika)) {
