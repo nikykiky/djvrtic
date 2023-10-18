@@ -75,6 +75,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
+    background-image: linear-gradient(red, yellow);
 }
 
 
@@ -143,7 +144,11 @@ a:hover {
 .hourHand{
     width: 10px;
     height: 75px;
+<<<<<<< HEAD
+    background-color:red;
+=======
     background-color: #f0007c;
+>>>>>>> refs/remotes/origin/master
     transform-origin: bottom center;
     border-radius: 4px;
     position: absolute;
