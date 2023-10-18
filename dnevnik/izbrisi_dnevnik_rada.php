@@ -10,18 +10,27 @@
 <h2> Brisanje dnevnika rada</h2>
 
 <?php
-    mysql_connect("localhost", "root", "");
-    mysql_select_db("dnevnik_rada_psiholog");
-    $rezultat = mysql_query("DELETE FROM dnevnik_rada WHERE id_dr={$_GET['id_dr']} LIMIT 1");
-
-if (mysql_affected_rows() == 1) 
-{ 
-	print "Promjene su unijete u tablicu.<br />";
-}
-else
-{
-	print "Niste ni�ta mijenjali.<br />";
-}
+    $con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
+    if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    
+    if (isset($_GET['id_dr'])) {
+        $id_b = $_GET['id_dr'];
+    
+        $brisanje = "DELETE FROM dnevnik_Rada WHERE id_dr = $id_b";
+        $querry = mysqli_query($con, $brisanje);
+    
+        if ($querry && mysqli_affected_rows($con) > 0) {
+            print "Promjene su unesene u tablicu.";
+        } else {
+            print "Niste ništa mijenjali ili se dogodila greška pri brisanju.";
+        }
+    } else {
+        print "Niste naveli id_b za brisanje.";
+    }
+    
+    $con->close();
 
 ?>
 

@@ -1,4 +1,4 @@
-<?php require_once("../sigurnost/sigurnosniKod.php");?>
+<!-- <?php require_once("../sigurnost/sigurnosniKod.php");?>
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -14,14 +14,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 <h2> Dodavanje clanaka </h2>
 <?php
-    mysql_connect("localhost", "root", "");
-    mysql_select_db("cms");
+   $con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
 
-$result = mysql_query("INSERT INTO clanci (naziv, opis, multimedija1, multimedija2, id_pod, prom1, prom2) values ('$_GET[naziv]','$_GET[opis]','$_GET[multimedija1]','$_GET[multimedija2]','$_GET[id_pod]','$_GET[prom1]','$_GET[prom2]')");
 
-if (mysql_affected_rows() == 1) {
+$result = mysqli_query($con, "INSERT INTO clanci (naziv, opis, multimedija1, multimedija2, id_pod, prom1, prom2) values ('$_GET[naziv]','$_GET[opis]','$_GET[multimedija1]','$_GET[multimedija2]','$_GET[id_pod]','$_GET[prom1]','$_GET[prom2]')");
+
+if (mysqli_affected_rows() == 1) {
 ?>
-Uspjeöno uneöeno! <br /><br />
+Uspje≈°no une≈°eno! <br /><br />
 <a href="dodaj.php">Dodaj</a><br /> &nbsp;
 <a href="../index.php">Index</a> <br /> &nbsp;
 <a href="admin.php">Administracija gl. linkova</a> <br /> &nbsp;
@@ -40,4 +40,4 @@ Nije unijeto!<br /><br />
 <br>
 </div>
 </body>
-</html>
+</html> -->

@@ -10,16 +10,11 @@
 <h2>Pregled ucenika</h2>
 <a href="admin_ucenika.php">Administracija ucenika</a><br /><br />
 <?php
-	$con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
-	$pdtc_ucenika = mysqli_query($con, "SELECT *
-	FROM ucenik 
-	WHERE id_uc={$_GET['id_ucenika']}");
+    $con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
+
+	$pdtc_ucenika = mysqli_query($con,"SELECT * FROM ucenik WHERE id_uc={$_GET['id_ucenika']}");
 	
-    $dosje_ucenika = mysqli_query($con, "SELECT opis, DATE_FORMAT(datum_unosa,' %d.%c.%Y %H:%i') AS dan_upisa, korisnik.ime AS korisnik
-	FROM ucenik 
-	INNER JOIN dosje_ucenika ON ucenik.id_uc = dosje_ucenika.id_uc 
-	INNER JOIN korisnik ON korisnik.id_ko = dosje_ucenika.id_ko
-	WHERE dosje_ucenika.id_uc={$_GET['id_ucenika']}");
+    $dosje_ucenika = mysqli_query($con, "SELECT opis, DATE_FORMAT(datum_unosa,' %d.%c.%Y %H:%i') AS dan_upisa, korisnik.ime AS korisnik FROM ucenik INNER JOIN dosje_ucenika ON ucenik.id_uc = dosje_ucenika.id_uc INNER JOIN korisnik ON korisnik.id_ko = dosje_ucenika.id_ko WHERE dosje_ucenika.id_uc={$_GET['id_ucenika']}");
    
 	echo "<form action='dodaj_dosje.php' method='POST'>";
 
