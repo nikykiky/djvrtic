@@ -144,11 +144,8 @@ a:hover {
 .hourHand{
     width: 10px;
     height: 75px;
-<<<<<<< HEAD
     background-color:red;
-=======
-    background-color: #f0007c;
->>>>>>> refs/remotes/origin/master
+/* Cigo */
     transform-origin: bottom center;
     border-radius: 4px;
     position: absolute;
