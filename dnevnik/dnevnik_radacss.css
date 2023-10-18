@@ -2,23 +2,17 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-
 }
-
 
 .sve {
     max-width: 1200px;
     margin: 0 auto;
-
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
     z-index:2;
- 
 }
-
-
 
 header {
     background-color: #007bff;
@@ -28,17 +22,14 @@ header {
     border-radius: 10px 10px 0 0;
 }
 
-
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-
 form {
     margin-bottom: 20px;
 }
-
 
 input[type="text"], textarea {
     width: 100%;
@@ -49,7 +40,6 @@ input[type="text"], textarea {
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
-
 
 input[type="text"]:focus, textarea:focus {
     border-color: #007bff;
@@ -66,7 +56,6 @@ input[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
@@ -76,7 +65,6 @@ table {
     border-collapse: collapse;
     border: 1px solid #ddd;
 }
-
 
 table th {
     background-color: #007bff;
@@ -97,23 +85,19 @@ table td {
     font-size: 16px;
 }
 
-
 a {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
 }
 
-
 a:hover {
     text-decoration: underline;
 }
 
-
 .edit-link, .delete-link {
     margin-right: 10px;
 }
-
 
 @media screen and (max-width: 768px) {
     .sve {
@@ -123,6 +107,7 @@ a:hover {
         border-radius: 0;
     }
 }
+
 .clock{
     width: 300px;
     height: 300px;
@@ -134,6 +119,7 @@ a:hover {
     border:20px solid #005ec2;
     z-index:2;
 }
+
 .center{
     background-color: #000;
     position: absolute;
@@ -144,6 +130,7 @@ a:hover {
     border-radius: 50%;
     z-index: 20;
 }
+
 .hourHand{
     width: 10px;
     height: 75px;
@@ -157,7 +144,6 @@ a:hover {
     z-index: 10;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
       transform: rotate(360deg);
-
 }
 .minuteHand{
     width: 5px;
@@ -171,8 +157,8 @@ a:hover {
     z-index: 9;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
       transform: rotate(90deg);
-
 }
+
 .secondHand{
     width: 2px;
     height: 120px;
@@ -188,6 +174,7 @@ a:hover {
       transform: rotate(360deg);
 
 }
+
 .time{
     position: absolute;
     top: 45%;
@@ -200,8 +187,8 @@ a:hover {
     border-radius: 5px;
     min-width: 70px;
     height: 15px;
-
 }
+
 .time small{
     color:red;
     transition: all 0.05s;
@@ -211,8 +198,8 @@ a:hover {
 .clock ul{
     list-style: none;
     padding: 0;
-
 }
+
 .clock ul li{
     position: absolute;
     width:20px;
@@ -222,6 +209,7 @@ a:hover {
     font-size: 10px;
     color:red;
 }
+
 .clock ul li:nth-child(1){
     right: 22%;
     top:6.5%;
@@ -283,10 +271,7 @@ a:hover {
     font-weight: bold;
 }
 
-
-
-
-/*  footer   */
+/* FOOTER */
 footer {
     background-color: #222;
     color: #fff;
@@ -303,6 +288,7 @@ footer p {
     margin: 10px 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida  Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 footer .fa-heart{
     color: red;
 }
@@ -310,19 +296,20 @@ footer .fa-dev{
     color: #fff;
 }
 footer .fa-twitter-square{
-  color:#1da0f1;
+    color:#1da0f1;
 }
 footer .fa-instagram{
-  color: #f0007c;
+    color: #f0007c;
 }
-fotter .fa-linkedin{
-  color:#0073b1;
+footer .fa-linkedin{
+    color:#0073b1;
 }
 footer .fa-codepen{
-  color:#fff
+    color:#fff
 }
+
 footer a {
     color: #3c97bf;
     text-decoration: none;
-  margin-right:5px;
+    margin-right:5px;
 }
