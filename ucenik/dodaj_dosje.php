@@ -17,24 +17,24 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 ?>
 <form action="dodaj_pohrani_ucenika.php" method="POST">
-Ime: <input type="text" name="ime_ucenika" /><br />
-Prezime: <input type="text" name="prezime_ucenika"><br />
-OIB: <input type="number" name="oib_ucenika" /><br />
-Datum rođenja: <input type="date" name="datum_rodenja" /><br />
-Adresa: <input type="text" name="adresa_ucenika" /><br />
-Grad: <input type="text" name="grad_ucenika" /><br />
+Ime: <input type="text" name="ime_ucenika" />
+Prezime: <input type="text" name="prezime_ucenika">
+OIB: <input type="number" name="oib_ucenika" />
+Datum rođenja: <input type="date" name="datum_rodenja" />
+Adresa: <input type="text" name="adresa_ucenika" />
+Grad: <input type="text" name="grad_ucenika" />
 Spol: <input type="radio" name="spol_ucenika" value="musko"> 
 	<input type="radio" name="spol_ucenika" value="zensko">
-Rješenje: <input type="text" name="rjesenje_ucenika" /><br />
-Klasa: <input type="text" name="klasa_ucenika" /><br />
+Rješenje: <input type="text" name="rjesenje_ucenika" />
+Klasa: <input type="text" name="klasa_ucenika" />
 
-Ime oca: <input type="text" name="ime_oca" /><br />
-Mob oca: <input type="text" name="mob_oca" /><br />
-Ime majke: <input type="text" name="ime_majke" /><br />
-Mob majke: <input type="text" name="mob_majke" /><br />
+Ime oca: <input type="text" name="ime_oca" />
+Mob oca: <input type="text" name="mob_oca" />
+Ime majke: <input type="text" name="ime_majke" />
+Mob majke: <input type="text" name="mob_majke" />
 
-Id sk. godine: <input type="text" name="id_sk_god" /><br />
-ID razreda: <input type="text" name="id_razreda" /><br />
+Id sk. godine: <input type="text" name="id_sk_god" />
+ID razreda: <input type="text" name="id_razreda" />
 
 <input type="submit" value="Dodaj učenika"/>
 </form>

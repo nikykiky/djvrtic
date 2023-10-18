@@ -49,7 +49,7 @@ INSERT INTO ucenik_razred (id_ra, id_uc, id_skgod) values
 ('$_POST[id_razreda]',".$id_ucenika.",'$_POST[id_sk_god]');
 ");
 
-if (mysqli_affected_rows() == 1) {
+if (mysqli_affected_rows() != 1) {
 ?>
 Uspje�no une�eno! <br /><br />
 <?php
