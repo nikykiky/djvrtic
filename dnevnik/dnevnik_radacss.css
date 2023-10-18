@@ -75,7 +75,6 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
-    background-image: linear-gradient(red, yellow);
 }
 
 
@@ -87,6 +86,10 @@ table th {
     font-size: 18px;
 }
 
+#plava {
+    background-color: #007bff;
+    color:white;
+}
 
 table td {
     padding: 15px;
