@@ -21,7 +21,7 @@
 	INNER JOIN korisnik ON korisnik.id_ko = dosje_ucenika.id_ko
 	WHERE dosje_ucenika.id_uc={$_GET['id_ucenika']}");
    
-	echo "<form action='dodaj_pohrani_ucenika.php' method='POST'>";
+	echo "<form action='dodaj_dosje.php' method='POST'>";
 
 	//if(if(isset($_POST['submit'])) != true )
 	while ($redak = mysqli_fetch_assoc($pdtc_ucenika)) {
