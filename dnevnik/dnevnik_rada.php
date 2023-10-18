@@ -123,7 +123,7 @@ require_once("../izbornik.php");
 
 	if(!isset($_POST['sbmt_date'])) {
 	echo "<table border='1'>
-		<tr valign='top'>
+		<tr id='plava' valign='top'>
 		<td><b>Dnevnik rada</b></td>
 		<td><b>Upisao</b></td>
  		<td><b>Izmjeni</b></td>
