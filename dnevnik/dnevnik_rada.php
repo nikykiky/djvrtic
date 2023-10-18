@@ -6,157 +6,75 @@
 <title>Dnevnik rada</title>
 <meta http-equiv="Content-Type" content="text/html"/>
 <meta charset="utf-8">
+<link href="dnevnik_radacss.css" rel="stylesheet" type="text/css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="../jquery/jquery-ui.min.js"></script>
 <link href="../jquery/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-<style>
-	body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-}
 
-
-.sve {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-
-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px 10px 0 0;
-}
-
-
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
-form {
-    margin-bottom: 20px;
-}
-
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-
-input[type="text"]:focus, textarea:focus {
-    border-color: #007bff;
-}
-
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ddd;
-}
-
-
-table th {
-    background-color: #007bff;
-    color: #fff;
-    padding: 15px;
-    text-align: left;
-    font-size: 18px;
-}
-
-
-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-}
-
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-
-a:hover {
-    text-decoration: underline;
-}
-
-
-.edit-link, .delete-link {
-    margin-right: 10px;
-}
-
-
-@media screen and (max-width: 768px) {
-    .sve {
-        border-radius: 0;
-    }
-    header {
-        border-radius: 0;
-    }
-}
-</style>
 </head>
 <body>
+
 <script>
-          
-          $(document).ready(function(){
-            setInterval(function() {
-             var date = new Date();
-             $('#clock-wrapper').html(
-            date.getHours() + " Sati " + date.getMinutes() + " Minuta " + date.getSeconds() + " Sekundi "
-            );
-            }, 500);
-            function updateCurrentDate() {
-            const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = now.toLocaleDateString(undefined, options);
-            
-            // Display the current date
-            document.getElementById('currentDate').innerHTML = formattedDate;
-        }
+    window.onload = function() {
 
-        // Update the current date every second
-        setInterval(updateCurrentDate, 1000);
+const hourHand = document.querySelector('.hourHand');
+    const minuteHand = document.querySelector('.minuteHand');
+    const secondHand = document.querySelector('.secondHand');
+    const time = document.querySelector('.time');
+    const clock = document.querySelector('.clock');
+    const audio = document.querySelector('.audio');
 
-        // Initial update
-        updateCurrentDate();
-            });
+    function setDate(){
+        const today = new Date();
         
+        const second = today.getSeconds();
+        const secondDeg = ((second / 60) * 360) + 360; 
+        secondHand.style.transform = `rotate(${secondDeg}deg)`;
+      
+        audio.play();
+        
+        const minute = today.getMinutes();
+        const minuteDeg = ((minute / 60) * 360); 
+        minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+
+        const hour = today.getHours();
+        const hourDeg = ((hour / 12 ) * 360 ); 
+        hourHand.style.transform = `rotate(${hourDeg}deg)`;
+        
+        time.innerHTML = '<span>' + '<strong>' + hour + '</strong>' + ' : ' + minute + ' : ' + '<small>' + second +'</small>'+ '</span>';
+
+        }
+  
+    setInterval(setDate, 1000);
+ 
+}
         </script>
+
+<div class="clock">
+        <div class="hourHand"></div>
+        <div class="minuteHand"></div>
+        <div class="secondHand"></div>
+        <div class="center"></div>
+        <div class="time"></div>
+        <ul>
+            <li><span>1</span></li>
+            <li><span>2</span></li>
+            <li><span>3</span></li>
+            <li><span>4</span></li>
+            <li><span>5</span></li>
+            <li><span>6</span></li>
+            <li><span>7</span></li>
+            <li><span>8</span></li>
+            <li><span>9</span></li>
+            <li><span>10</span></li>
+            <li><span>11</span></li>
+            <li><span>12</span></li>
+        </ul>
+    </div>
+
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20and%20SINGLE%20HITS/snares/5[kb]sidestick.aif.mp3" class="audio"   ></audio>
+
+
 <div class="sve">
 
 <?php 
@@ -166,9 +84,15 @@ require_once("../izbornik.php");
 
 <h2>Dnevnik rada</h2>
 
-<h4>Današnji datum:</h4>
-<div id="currentDate"></div>
-<p id="clock-wrapper"></p>
+
+
+<footer>
+  <p>
+		Created by G4P<i class="fa fa-heart"><a></a></i> 
+</p>
+</footer>
+
+
 <form action="dodaj_dnevnik_rada.php" method="POST">
 
 </p>
@@ -178,7 +102,7 @@ require_once("../izbornik.php");
 	<form action="dodaj_dnevnik_rada.php" method="POST"> 
 		<input type="text" name="id_korisnika" value="<?=$_SESSION['user_id']?>" style="display:none"/>
 		Opis: <br />
-		<textarea rows="4" cols="50" name="opis_dnevnik_rada"></textarea><br />
+		<textarea rows="3" cols="10" name="opis_dnevnik_rada"></textarea><br />
 		<input type="submit" value="Dodaj dnevnik rada" name="sbmt_dnevnik_rad"/>
 	</form>
 </div>

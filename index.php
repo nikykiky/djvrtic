@@ -8,5 +8,10 @@
 <link href="admin_css.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div></div>
+    <p></p>
+    <div class="container">
+        cigo
+    </div>
 </body>
 </html>
