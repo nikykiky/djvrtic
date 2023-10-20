@@ -2,7 +2,9 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
+    
 }
+
 
 .sve {
     max-width: 1200px;
@@ -21,6 +23,7 @@ header {
     text-align: center;
     border-radius: 10px 10px 0 0;
 }
+
 
 h2 {
     font-size: 24px;
