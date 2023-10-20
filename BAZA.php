@@ -1,5 +1,4 @@
-﻿create database dnevnik_rada_psiholog;
-
+create database dnevnik_rada_psiholog;
 CREATE TABLE `ucenik` (
 `id_uc` int(4) auto_increment primary key, 
 `ime` char(15) NOT NULL,  
@@ -134,3 +133,4 @@ INSERT INTO `dnevnik_rada` (`id_ko`, `opis`, `datum_unosa`) VALUES
 
 INSERT INTO `dosje_ucenika` (`id_uc`, `id_ko`, `opis`, `datum_unosa`) VALUES 
 (2,2,'Ima mokraćnih problema','2017-03-15 15:45'),(2,1,'Donio nalaze','2017-03-15 15:45'),(3,1,'Zelucane tegobe','2017-03-15 15:45');
+
