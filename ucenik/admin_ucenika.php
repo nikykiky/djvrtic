@@ -37,7 +37,7 @@
 		FROM ucenik_razred
 		INNER JOIN ucenik ON ucenik_razred.id_uc = ucenik.id_uc 
 		INNER JOIN razred ON ucenik_razred.id_ra = razred.id_raz 
-		WHERE razred.oznaka_raz = '$_GET[razred]'
+		WHERE razred.oznaka_raz = '$_POST[razred]'
 		order by oznaka_raz desc;");
     
 		echo "<table border='1'>
