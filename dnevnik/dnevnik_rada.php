@@ -60,12 +60,40 @@
 		</div>
 		
 		<h2>Pregled dnevnika rada za današnji datum</h2>
-
-    $pdtc_dnevnik_rada = mysqli_query($con, "
-        SELECT * FROM dnevnik_rada
-        INNER JOIN korisnik ON korisnik.id_ko = dnevnik_rada.id_ko
-        WHERE datum_unosa LIKE '$danasnji_datum%'
-    ");
+<?php
+	
+	require_once("../sigurnost/sigurnosniKod.php");
+	
+	// Create a database connection
+	$con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
+	
+	// Check the connection
+	if (mysqli_connect_error()) {
+		die("Database connection failed: " . mysqli_connect_error());
+	}
+	
+	if (isset($_POST['sbmt_dnevnik_rad'])) {
+		$korisnik = $_SESSION['user_id'];
+		$opis = $_POST["opis_dnevnik_rada"];
+	
+		// Use prepared statement to insert data
+		$stmt = $con->prepare("INSERT INTO dnevnik_rada (id_ko, opis) VALUES (?, ?)");
+		$stmt->bind_param("is", $korisnik, $opis);
+	
+		if ($stmt->execute()) {
+			header("Location: " . $_SERVER['PHP_SELF']);
+			exit();
+		} else {
+			echo "Error: " . $stmt->error;
+		}
+	}
+	
+	$danasnji_datum = date("Y-m-d");
+	$pdtc_dnevnik_rada = mysqli_query($con, "
+		SELECT * FROM dnevnik_rada
+		INNER JOIN korisnik ON korisnik.id_ko = dnevnik_rada.id_ko
+		WHERE datum_unosa LIKE '$danasnji_datum%'
+	");
 	
     echo "<table id='tablica_dnevnika_rada' border='1'>
             <tr id='plava' valign='top'>
