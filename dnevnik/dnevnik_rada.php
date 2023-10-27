@@ -1,4 +1,4 @@
-﻿
+
 
 
 <?php require_once("../sigurnost/sigurnosniKod.php"); ?>
@@ -15,62 +15,51 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="custom-cursor"></div>
-<div class="clock">
-    <div class="hourHand"></div>
-    <div class= "minuteHand"></div>
-    <div class="secondHand"></div>
-    <div class="center"></div>
-    <div class="time"></div>
-    <ul>
-        <?php
-        for ($i = 1; $i <= 12; $i++) {
-            echo "<li><span>$i</span></li>";
-        }
-        ?>
-    </ul>
-</div>
+	<script>
+		/**
+		 * samom sat
+		 */
+		window.onload = function() {
+			const time = document.querySelector('.time');
+			const clock = document.querySelector('.clock');
 
+			function setDate(){
+				const today = new Date();
+				const second = today.getSeconds().toString().padStart(2, '0');
+				const minute = today.getMinutes().toString().padStart(2, '0');
+				const hour = today.getHours().toString().padStart(2, '0');
+				
+				time.innerHTML = '<span>' + hour  + ' : ' + minute + ' : ' + second + '</span>';
+			}
+			setInterval(setDate, 1000);
+		}
+	</script>
 
-<div class="sve">
-	 
-    <?php require_once("../izbornik.php"); ?>
-    <h2>Dnevnik rada</h2>
-    <footer>
-        <p>Created by G4P <i class="fa fa-heart"></i></p>
-    </footer>
-	<div class="cursor small"></div>
-    <p id="demo"></p>
-    <div class="unos_dnevnika">
-        <form action="" method="POST">
-            <input type="text" name="id_korisnika" value="<?= $_SESSION['user_id'] ?>" style="display:none" />
-            Opis: <br />
-            <textarea rows="3" cols="5" name="opis_dnevnik_rada" ></textarea>
-            <br />
-            <input type="submit" value="Dodaj dnevnik rada" name="sbmt_dnevnik_rad" /><i class="fa fa-database" ></i>
-        </form>
-        <input type="text" id="datepicker" style="width:100px; background-color:blue; color:white">
-    </div>
+	<div class="sve">
+		<?php 
+			//trenutno samo botun odjava
+			require_once("../izbornik.php"); 
+		?> 
 
-    <h2>Pregled dnevnika rada za današnji datum</h2>
+		<h2>Dnevnik rada</h2>
 
-    <?php
-    $con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
+		<p id="demo"></p>
+		<div class="unos_dnevnika">
+			<form action="" method="POST"> 
+				<input type="text" name="id_korisnika" value="<?=$_SESSION['user_id']?>" style="display:none"/>
+				Opis: <br />
+				<textarea rows="3" cols="5" name="opis_dnevnik_rada"></textarea>
+				<br />
+				<input type="submit" value="Dodaj dnevnik rada" name="sbmt_dnevnik_rad"/>
+			</form>
 
-    if (isset($_POST['sbmt_dnevnik_rad'])) {
-        $korisnik = $_SESSION['user_id'];
-        $opis = $_POST["opis_dnevnik_rada"];
-        $rezultat = "INSERT INTO dnevnik_rada (id_ko, opis) values('$korisnik','$opis')";
-        if (mysqli_query($con, $rezultat)) {
-          
-            header("Location: ".$_SERVER['PHP_SELF']);
-            exit();
-        } else {
-            echo "Error: " . $rezultat . "<br>" . mysqli_error($con);
-        }
-    }
-
-    $danasnji_datum = date("Y-m-d");
+			<div>
+				<input type="text" id="datepicker">		
+				<div class="time"></div>
+			</div>
+		</div>
+		
+		<h2>Pregled dnevnika rada za današnji datum</h2>
 
     $pdtc_dnevnik_rada = mysqli_query($con, "
         SELECT * FROM dnevnik_rada
@@ -287,7 +276,6 @@
 	var formatiraniDatum =  mjesec + '-' + dan + '-' + godina;
 	// Postavite vrijednost input polja na današnji datum
 	$("#datepicker").val(formatiraniDatum);
-
 
 
 

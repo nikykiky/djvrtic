@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -5,8 +11,15 @@ body, html {
     
 }
 
+body{
+    background-image: url("../gogssbg.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
 
 .sve {
+    background-color: white;
     max-width: 1200px;
     margin: 0 auto;
     border-radius: 10px;
@@ -41,7 +54,7 @@ input[type="text"], textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 input[type="text"]:focus, textarea:focus {
@@ -56,7 +69,7 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 input[type="submit"]:hover {
@@ -111,208 +124,19 @@ a:hover {
     }
 }
 
-.clock{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+#datepicker, .time {
+    width: 100px;
+    height: 25px;
+    display: inline-block;
     background-color: #007bff;
-    margin: 100px auto 0px auto;
-    float:right;
-    position: fixed;
-    border:20px solid #005ec2;
-    z-index:2;
-}
-
-.center{
-    background-color: #000;
-    position: absolute;
-    left: calc(50% - 10px);
-    top:  calc(50% - 10px);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    z-index: 20;
-}
-
-.hourHand{
-    width: 10px;
-    height: 75px;
-    background-color:red;
-/* Cigo */
-    transform-origin: bottom center;
-    border-radius: 4px;
-    position: absolute;
-    top: 75px;
-    left: 145px;
-    z-index: 10;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-      transform: rotate(360deg);
-}
-.minuteHand{
-    width: 5px;
-    height: 120px;
-    background-color: rgb(138, 0, 0)000;
-    transform-origin: bottom center;
-    border-radius: 4px;
-    position: absolute;
-    top: 30px;
-    left: 147px;
-    z-index: 9;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-      transform: rotate(90deg);
-}
-
-.secondHand{
-    width: 2px;
-    height: 120px;
-    background-color:rgb(255, 69, 69);
-    transform-origin: bottom center;
-    border-radius: 4px;
-    position: absolute;
-    top: 30px;
-    left: 149px;
-    transition: all 0.06s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-    z-index: 8;  
-      transform: rotate(360deg);
-
-}
-
-.time{
-    position: absolute;
-    top: 45%;
-    left: 10%;
-    border: 1px solid #fff8dc;
-    background-color: #fff;
-    padding: 5px;
-    display: block;
-    box-shadow: inset 0px 2px 5px rgba(0,0,0,.4);
+    text-align: center;
+    padding: 11px;
     border-radius: 5px;
-    min-width: 70px;
-    height: 15px;
+    color: white;
 }
 
 .time small{
     color:red;
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-}
-
-.clock ul{
-    list-style: none;
-    padding: 0;
-}
-
-.clock ul li{
-    position: absolute;
-    width:20px;
-    height:20px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 10px;
-    color:red;
-}
-
-.clock ul li:nth-child(1){
-    right: 22%;
-    top:6.5%;
-}
-.clock ul li:nth-child(2){
-    right: 6%;
-    top:25%;
-}
-.clock ul li:nth-child(3){
-    right: 1%;
-    top:calc(50% - 10px);
-    color:#000;
-    font-size: 20px;
-    font-weight: bold;
-}
-.clock ul li:nth-child(4){
-    right: 6%;
-    top:69%;
-}
-.clock ul li:nth-child(5){
-    right: 22%;
-    top:84%;
-}
-.clock ul li:nth-child(6){
-    right: calc(50% - 10px);
-    top:calc(99% - 20px);
-    color:#000;
-    font-size: 20px;
-    font-weight: bold;
-}
-.clock ul li:nth-child(7){
-    left: 22%;
-    top:84%;
-}
-.clock ul li:nth-child(8){
-    left: 6%;
-    top:69%;
-}
-.clock ul li:nth-child(9){
-    left: 1%;
-    top:calc(50% - 10px);
-    color:#000;
-    font-size: 20px;
-    font-weight: bold;
-}
-.clock ul li:nth-child(10){
-    left: 6%;
-    top:25%;
-}
-.clock ul li:nth-child(11){
-    left: 22%;
-    top:6.5%;
-}
-.clock ul li:nth-child(12){
-    right: calc(50% - 10px);
-    top:1%;
-    color:#000;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* FOOTER */
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida  Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-footer .fa-heart{
-    color: red;
-}
-footer .fa-dev{
-    color: #fff;
-}
-footer .fa-twitter-square{
-    color:#1da0f1;
-}
-footer .fa-instagram{
-    color: #f0007c;
-}
-footer .fa-linkedin{
-    color:#0073b1;
-}
-footer .fa-codepen{
-    color:#fff
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
-    margin-right:5px;
 }
