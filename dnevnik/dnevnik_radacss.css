@@ -16,6 +16,7 @@ body{
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed;
+    cursor: url('../ry.png'), auto;
 }
 
 .sve {
@@ -27,6 +28,9 @@ body{
     padding: 20px;
     box-sizing: border-box;
     z-index:2;
+    background-image: url(../ry.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
@@ -140,3 +144,184 @@ a:hover {
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
+/* Nandov css */
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .svgIcon {
+    width: 12px;
+    transition-duration: .3s;
+  }
+  
+  .svgIcon path {
+    fill: white;
+  }
+  
+  .button:hover {
+    width: 140px;
+    height:60;
+    border-radius: 50px;
+    transition-duration: .3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+  }
+  
+  .button:hover .svgIcon {
+    width: 50px;
+    transition-duration: .3s;
+    transform: translateY(60%);
+  }
+  
+  .button::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: .3s;
+    font-size: 2px;
+  }
+  
+  .button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(30px);
+    transition-duration: .3s;
+  }
+  .button1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height:60;
+    padding: 0 10px;
+    color: white;
+    text-shadow: 2px 2px rgb(116, 116, 116);
+    text-transform: uppercase;
+    border: solid 2px black;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: hsl(49deg 98% 60%);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s ease;
+  }
+  
+  .button1:active {
+    transform: scale(.9);
+    transition: all 100ms ease;
+  }
+  
+  .button1 svg {
+    transition: all .5s ease;
+    z-index: 2;
+  }
+  
+  .play {
+    transition: all .5s ease;
+    transition-delay: 300ms;
+  }
+  
+  .button1:hover svg {
+    transform: scale(3) translate(50%);
+  }
+  
+  .now {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    z-index: 2;
+  }
+  
+  .button1:hover .now {
+    transform: translateX(10px);
+    transition-delay: 300ms;
+  }
+  
+  .button1:hover .play {
+    transform: translateX(200%);
+    transition-delay: 300ms;
+  }
+ 
+  /* Rotacija u css */
+  .obj {
+    position: relative;
+    width: 80%;
+    height:80%;
+      /* background-color: rgb(96, 96, 232); */
+      margin-top:5% ;
+    transform-style: preserve-3d;
+    transition: 0.5s all;
+    transform: rotateX(-25deg) rotateY(20deg);
+  }
+  
+  .objchild {
+    animation: rotate 480s infinite linear;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+      /* background:linear-gradient( to top,rgb(11, 11, 102),rgb(96, 96, 232) ) ; */
+  }
+  
+  .objchild::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+      /* background: rgb(37, 101, 230); */
+      /* background: radial-gradient(center center, farthest-side , #9993, transparent); */
+    filter: blur(20px);
+    box-shadow: 0 0 200px 15px white;
+    transform: rotateX(90deg) scale(1.1) translateZ(-120px);
+  }
+  
+  .inn6 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(21, 21, 21);
+    transform: rotateX(90deg) translateZ(100px);
+    animation: updown 4s infinite ease-in-out;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate3d(0,1,0,0deg);
+    }
+  
+    100% {
+      transform: rotate3d(0,1,0,360deg);
+    }
+  }
+  
+  @keyframes updown {
+    0% {
+      transform: translateY(100px) rotateX(90deg) translateZ(100px);
+    }
+  
+    50% {
+      transform: translateY(200px);
+    }
+  
+    100% {
+      transform: translateY(100px) rotateX(450deg) translateZ(100px);
+    }
+  }
+  
