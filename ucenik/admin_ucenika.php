@@ -15,12 +15,12 @@
 	$con = mysqli_connect("localhost", "root", "", "dnevnik_rada_psiholog");
 	
 	$razredi = "SELECT oznaka_raz FROM razred";
-	$sql = mysqli_query($con,$razredi);
+	$sql = mysqli_query($con, $razredi);
 	echo "
-	<form action='".$_SERVER['PHP_SELF']."' method='GET'>
-		<select name='razred'>
+	<form action='".$_SERVER['PHP_SELF']."' method='POST'>
+		<select name='razred' id='drop'>
 		<option value='--'>--</option>";
-		while($raz = mysqli_fetch_array($razredi))
+		while($raz = mysqli_fetch_array($sql))
 		{
 			echo "<option value='".$raz['oznaka_raz']."'>".$raz['oznaka_raz']."</option>";
 		}
@@ -29,7 +29,7 @@
 	</form>";
 	
 	
-	if (isset($_POST))
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['razred']))
 	{
 
 		$rezultat = mysqli_query($con,"
@@ -37,10 +37,10 @@
 		FROM ucenik_razred
 		INNER JOIN ucenik ON ucenik_razred.id_uc = ucenik.id_uc 
 		INNER JOIN razred ON ucenik_razred.id_ra = razred.id_raz 
-		WHERE razred.oznaka_raz = '$_POST[razred]'
-		order by oznaka_raz desc;");
+		WHERE razred.oznaka_raz LIKE '".$_POST['razred']."'
+		ORDER BY oznaka_raz DESC;");
     
-		echo "<table border='1'>
+		echo "<table border='1' id='tablica_pregled'>
 			<tr valign='top'>
 			<td><b>Ime</b></td>
 			<td><b>Prezime</b></td>
