@@ -255,46 +255,69 @@
 
 
 	$("#datepicker").datepicker({
-		dateFormat: "mm-dd-yy", 
-		onSelect: function(dateText, inst) {
-			var odabrani_datum  = new Date(dateText);
-			console.log(dateText)
-			console.log(odabrani_datum)
-			var datum = odabrani_datum.getFullYear() + '-' + ((odabrani_datum.getMonth() + 1) < 10 ? '0' : '') + (odabrani_datum.getMonth() + 1) + '-' + ((odabrani_datum.getDate() + 1) < 10 ? '0' : '') + (odabrani_datum.getDate());
-			
-			var url = 'sql_dohvati_po_datumu.php';
-			console.log("datum", odabrani_datum)
-			$.post(url, { datum: datum}, function(data){      
-				$('#demo').append(data);
-			});
-			console.log(datum);
+    dateFormat: "mm-dd-yy",
+    onSelect: function (dateText, inst) {
+        var odabrani_datum = new Date(dateText);
+        var datum = odabrani_datum.getFullYear() + '-' + ((odabrani_datum.getMonth() + 1) < 10 ? '0' : '') + (odabrani_datum.getMonth() + 1) + '-' + ((odabrani_datum.getDate() + 1) < 10 ? '0' : '') + (odabrani_datum.getDate());
 
-			$.ajax({
-				type: "POST",
-				url: "sql_dohvati_po_datumu.php",
-				data: {"datum" : datum},
-				success: function (podaci) {
-					var tbody = $("#tablica_dnevnika_rada tbody");
-					var noviRedak;
-					podaci = JSON.parse(podaci)
-					console.log(podaci)
-					// Prolazite kroz dobivene podatke i dodajte ih u tablicu
-					for (var i = 0; i < podaci.length; i++) {
-						var redak = podaci[i];
-						noviRedak += 
-						`<tr>
-						<td>${redak.opis}</td>
-						<td>${redak.datum_unosa}</td> 
-						<td><a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='' data-dr_id=''>NERADIII</a></td>
-						<td><a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id=''>NERADIII</a></td>"+
-						</tr>`;
-						console.log(redak)
-						tbody.append(noviRedak);
-					}
-				}
-			});
-		}
-	});
+        var url = 'sql_dohvati_po_datumu.php';
+        $.post(url, { datum: datum }, function (data) {
+            $('#demo').empty(); // Clear previous content
+            if (data === "Nista nije uneseno taj dan") {
+                alert("Nema unosa za odabrani datum.");
+            } else {
+                $('#demo').append(data);
+                // Process the data and update the table here
+                var tbody = $("#tablica_dnevnika_rada tbody");
+                tbody.empty(); // Clear previous content
+                var noviRedak = "";
+                data = JSON.parse(data);
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    var redak = data[i];
+                    noviRedak +=
+                        `<tr>
+                            <td>${redak.opis}</td>
+                            <td>${redak.datum_unosa}</td> 
+                            <td><a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='${redak.opis}' data-dr_id='${redak.id}'>Uredi</a></td>
+                            <td><a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id='${redak.id}'>Izbriši</a></td>
+                        </tr>`;
+                    console.log(redak);
+                    tbody.append(noviRedak);
+                }
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "sql_dohvati_po_datumu.php",
+            data: { "datum": datum },
+            success: function (podaci) {
+                var tbody = $("#tablica_dnevnika_rada tbody");
+                tbody.empty(); // Clear previous content
+                var noviRedak = "";
+                podaci = JSON.parse(podaci);
+                console.log(podaci);
+
+                for (var i = 0; i < podaci.length; i++) {
+                    var redak = podaci[i];
+                    noviRedak +=
+                        `<tr>
+                            <td>${redak.opis}</td>
+                            <td>${redak.datum_unosa}</td> 
+                            <td><a onclick='uredi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_opis='' data-dr_id=''>NERADIII</a></td>
+                            <td><a onclick='izbrisi_unos_iz_dnevnika(this)' style='text-decoration: underline; cursor: pointer' data-dr_id=''>NERADIII</a></td>
+                        </tr>`;
+                    console.log(redak);
+                    tbody.append(noviRedak);
+                }
+            }
+        });
+    }
+});
+
+			
 
 	var danasnjiDatum = new Date();
 	var dan = danasnjiDatum.getDate();
