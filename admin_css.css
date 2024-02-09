@@ -29,8 +29,10 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    width: 400px;
+    margin-top: 10%;
+    padding: 40px;
+    padding-top: 1.5%;
+    width: 300px;
     text-align: center;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -40,7 +42,6 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    height: 600px;
 }
 
 h2 {
@@ -82,7 +83,6 @@ input[type="submit"] {
     font-size: 18px;
     transition: background-color 0.3s ease;
     width: 100%;
-    margin-top: 25px;
 }
 
 input[type="submit"]:hover {
@@ -114,6 +114,7 @@ input[type="submit"]:hover {
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
+    margin: 0;
     min-height: 60px;
     min-width: 0;
     outline: none;
@@ -140,21 +141,4 @@ input[type="submit"]:hover {
 .button:active {
     box-shadow: none;
     transform: translateY(0);
-}
-
-#tablica_pregled{
-    border-collapse: collapse;
-    border: 1px solid black;
-    margin-top: 30px;
-    margin-left: -5px;
-}
-
-td{
-    padding: 20px;
-}
-
-#drop{
-    margin-top: 10px;
-    width: 75px;
-    height: 25px;
 }
