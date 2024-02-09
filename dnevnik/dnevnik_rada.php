@@ -16,25 +16,23 @@
 </head>
 <body>
 	<script>
-		/**
-		 * samom sat
-		 */
-		window.onload = function() {
-			const time = document.querySelector('.time');
-			const clock = document.querySelector('.clock');
+		
+	function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
 
-			function setDate(){
-				const today = new Date();
-				const second = today.getSeconds().toString().padStart(2, '0');
-				const minute = today.getMinutes().toString().padStart(2, '0');
-				const hour = today.getHours().toString().padStart(2, '0');
-				
-				time.innerHTML = '<span>' + hour  + ' : ' + minute + ' : ' + second + '</span>';
-			}
-			setInterval(setDate, 1000);
-		}
+    const digitalClock = document.getElementById('digitalClock');
+    digitalClock.textContent = hours + ':' + minutes + ':' + seconds;
+  }
+setInterval(updateClock, 1000);
+
+
+  updateClock();
+
 	</script>
-
+<div class="digital-clock" id="digitalClock"></div>
 	<div class="sve">
 		<?php 
 			//trenutno samo botun odjava
@@ -55,7 +53,10 @@
 
 			<div>
 				<input type="text" id="datepicker">		
-				<div class="time"></div>
+				
+			</div>
+			<div class="clock">
+			  
 			</div>
 		</div>
 		
@@ -134,71 +135,13 @@
 	/** 
 	 * neki sat vjerojatno za delete al ajd
 	*/
-	/*
-	$(document).ready(function() {
-		// Making 2 variable month and day
-		var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
-		var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-
-		// make single object
-		var newDate = new Date();
-		// make current time
-		newDate.setDate(newDate.getDate());
-		// setting date and time
-		$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
-
-		setInterval( function() {
-			// Create a newDate() object and extract the seconds of the current time on the visitor's
-			var seconds = new Date().getSeconds();
-			// Add a leading zero to seconds value
-			$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
-		}, 1000);
-
-		setInterval( function() {
-			// Create a newDate() object and extract the minutes of the current time on the visitor's
-			var minutes = new Date().getMinutes();
-			// Add a leading zero to the minutes value
-			$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
-		}, 1000);
-
-		setInterval( function() {
-		// Create a newDate() object and extract the hours of the current time on the visitor's
-		var hours = new Date().getHours();
-		// Add a leading zero to the hours value
-		$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
-		}, 1000); 
-	});	
-*/
+	
+	
 
 /**
 	 * samom sat
 	 */
-	window.onload = function() {
 	
-		const hourHand = document.querySelector('.hourHand');
-		const minuteHand = document.querySelector('.minuteHand');
-		const secondHand = document.querySelector('.secondHand');
-		const time = document.querySelector('.time');
-		const clock = document.querySelector('.clock');
-
-		function setDate(){
-			const today = new Date();
-			const second = today.getSeconds();
-			const secondDeg = ((second / 60) * 360) + 360; 
-			secondHand.style.transform = `rotate(${secondDeg}deg)`;
-
-			const minute = today.getMinutes();
-			const minuteDeg = ((minute / 60) * 360); 
-			minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
-
-			const hour = today.getHours();
-			const hourDeg = ((hour / 12 ) * 360 ); 
-			hourHand.style.transform = `rotate(${hourDeg}deg)`;
-			
-			time.innerHTML = '<span>' + '<strong>' + hour + '</strong>' + ' : ' + minute + ' : ' + '<small>' + second +'</small>'+ '</span>';
-		}
-		setInterval(setDate, 1000);
-	}
  
 	function izbrisi_unos_iz_dnevnika(obj) {
 		var id_delete_dnevnika_rada = obj.getAttribute('data-dr_id');
