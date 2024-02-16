@@ -37,16 +37,7 @@ body{
     background-attachment: fixed;
 }
 
-.sve {
-    background-color: white;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-    z-index:2;
-}
+
 
 header {
     background: radial-gradient(circle at 85.4% 50.8%, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 74.2%);

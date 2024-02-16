@@ -3,7 +3,7 @@
 <head>
     <title>Spremanje učenika</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="admin_css.css" type="text/css" />
+    <link rel="stylesheet" href="./admin_css.css" type="text/css" />
 </head>
 <body>
 <div class="sve">
@@ -56,6 +56,8 @@
 
         if ($stmt_roditelji->execute() && $stmt_ucenik_razred->execute()) {
             echo "Uspješno uneseno!<br /><br />";
+            header("Location: admin_ucenika.php");
+            exit;
         } else {
             echo "Nije uneseno!<br /><br />";
         }

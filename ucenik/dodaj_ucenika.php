@@ -6,7 +6,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <title>Dodaj učenika</title>
 <meta http-equiv="Content-Type" content="text/html"/>
 <meta charset="utf-8">
-<link href="admin_css.css" rel="stylesheet" type="text/css" />
+<link href="./admin_css.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="sve">

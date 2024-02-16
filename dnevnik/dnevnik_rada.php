@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
 </head>
 <body>
 	<script>
@@ -33,7 +34,12 @@ setInterval(updateClock, 1000);
 
 	</script>
 <div class="digital-clock" id="digitalClock"></div>
-	<div class="sve">
+    <div class="sve">
+	
+	
+	
+			<a href="../ucenik/admin_ucenika.php" id="AmdinA">Admin </a>			
+
 		<?php 
 			//trenutno samo botun odjava
 			require_once("../izbornik.php"); 
@@ -127,6 +133,9 @@ setInterval(updateClock, 1000);
     <textarea id="uredi_unos" style="height:100%;padding:5px; font-family:Sans-serif; font-size:1.2em;"></textarea>
     <input type="text" style="display: none" />
 </div>
+    </div>
+	</div>
+
 
 
 
