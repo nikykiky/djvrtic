@@ -9,31 +9,31 @@
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
-    margin: 0 auto; /* Center the digital clock horizontally */
-    width: 100%; /* Make the digital clock same width as other elements */
+    margin: 0 auto;
+    /* Center the digital clock horizontally */
+    width: 100%;
+    /* Make the digital clock same width as other elements */
     max-width: 1200px;
 }
-  
-  .digital-clock span {
+
+.digital-clock span {
     margin: 0 5px;
-  }
-  
-*{
+}
+
+* {
     font-family: 'Open Sans', sans-serif;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
-
-    
 }
 
-body{
-    color:TomoJeHomo;
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    
+body {
+    color: TomoJeHomo;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
@@ -48,7 +48,6 @@ header {
     border-radius: 10px 10px 0 0;
 }
 
-
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -61,7 +60,8 @@ form {
     margin-bottom: 20px;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -71,14 +71,14 @@ input[type="text"], textarea {
     transition: 0.3s ease;
 }
 
-input[type="text"]:focus, textarea:focus {
+input[type="text"]:focus,
+textarea:focus {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
 
 }
 
 input[type="submit"] {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
-
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -87,9 +87,11 @@ input[type="submit"] {
     font-size: 18px;
     transition: 0.3s ease;
 }
-h2{
-text-align: center;
+
+h2 {
+    text-align: center;
 }
+
 input[type="submit"]:hover {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
 
@@ -100,9 +102,11 @@ table {
     border-collapse: collapse;
     border: 1px solid #ddd;
 }
-.eddel{
+
+.eddel {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
 }
+
 table th {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
     color: #fff;
@@ -113,7 +117,7 @@ table th {
 
 #plava {
     background: linear-gradient(115.7deg, rgb(3, 79, 135) 6.2%, rgb(0, 184, 214) 112.9%);
-    color:white;
+    color: white;
 }
 
 table td {
@@ -133,7 +137,8 @@ a:hover {
     text-decoration: underline;
 }
 
-.edit-link, .delete-link {
+.edit-link,
+.delete-link {
     margin-right: 10px;
 }
 
@@ -141,12 +146,14 @@ a:hover {
     .sve {
         border-radius: 0;
     }
+
     header {
         border-radius: 0;
     }
 }
 
-#datepicker, .time {
+#datepicker,
+.time {
     width: 100px;
     height: 25px;
     display: inline-block;
@@ -157,8 +164,8 @@ a:hover {
     color: white;
 }
 
-.time small{
-    color:red;
+.time small {
+    color: red;
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }

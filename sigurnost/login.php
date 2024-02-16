@@ -3,7 +3,7 @@
 <head>
 <title>Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel=stylesheet href="../admin_css.css" type="text/css" />
+<link rel=stylesheet href="./sigurnost_login.css" type="text/css" />
 </head>
 <body>
 
